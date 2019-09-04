@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>Archives: 2019/9 | Alex&#39;s Blog | It is better to be clear than to be clever.</title>
+    <title>vs2017-WebAPI编译报错 | Alex&#39;s Blog | It is better to be clear than to be clever.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="WebAPI,RESTful">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.4">
@@ -128,7 +128,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
@@ -147,7 +147,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Archives</span>
+            <span>vs2017-WebAPI编译报错</span>
             
         </div>
         
@@ -157,18 +157,21 @@
         
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Archives</h1>
+        <h1 class="title">vs2017-WebAPI编译报错</h1>
         <h5 class="subtitle">
             
+                <time datetime="2019-09-04T03:37:36.000Z" itemprop="datePublished" class="page-time">
+  2019-09-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/RESTful/">RESTful</a></li></ul>
+
+            
         </h5>
-        
-        <div class="remind">
-            <p>总计文章( <span>2</span> )篇，约( <span>14.6K</span> )字</p>
-            <p>Keep moving😎!!!</p>
-        </div>
         
     </div>
     
@@ -188,77 +191,130 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-                <h3 class="archive-separator">September, 2019</h3>
-                <div class="waterfall">
+
+<div class="container body-wrap">
+    <article id="post-vs2017-WebAPI编译报错"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">vs2017-WebAPI编译报错</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-04 11:37:36" datetime="2019-09-04T03:37:36.000Z"  itemprop="datePublished">2019-09-04</time>
+
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-09-04 11:37:36" datetime="2019-09-04T03:37:36.000Z"  itemprop="datePublished">2019-09-04</time>
-
-      
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/RESTful/">RESTful</a></li></ul>
 
 
 
-    </div>
-    
+            
+
+            
 
 
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/09/04/vs2017-WebAPI编译报错/">vs2017-WebAPI编译报错</a>
-    </h3>
-  
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="VS2017-web-api编译时-对路径“bin-roslyn-System-Reflection-Metadata-dll”的访问被拒绝-解决办法"><a href="#VS2017-web-api编译时-对路径“bin-roslyn-System-Reflection-Metadata-dll”的访问被拒绝-解决办法" class="headerlink" title="VS2017 web api编译时 对路径“bin\roslyn\System.Reflection.Metadata.dll”的访问被拒绝 解决办法"></a>VS2017 web api编译时 对路径“bin\roslyn\System.Reflection.Metadata.dll”的访问被拒绝 解决办法</h2><p>使用visual studio开发，一重新编译就会报错：<br>对路径“bin\roslyn\System.Reflection.Metadata.dll”的访问被拒绝</p>
+<p>一开始的解决办法就是把bin下的文件都删除了，但是roslyn文件夹下的部分文件一直被占用，必须进程中把vbcscompiler进程干掉，才能删除，再重新编译，就没问题了。</p>
+<p>但是过不了多久，编译又出错。</p>
+<p>把这个组件，通过nuget更新到1.0.7以上就可以了。</p>
 
-
-
-    
-    <div class="post-footer">
+        </div>
         
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-04T06:53:17.333Z" itemprop="dateUpdated">2019-09-04 14:53:17</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/09/04/vs2017-WebAPI编译报错/" target="_blank" rel="external">https://mar1timus.github.io/2019/09/04/vs2017-WebAPI编译报错/</a>
+        
+    </div>
+    <footer>
+        <a href="https://mar1timus.github.io">
+            <img src="/img/avatar.jpg" alt="Alex">
+            Alex
+        </a>
+    </footer>
+</blockquote>
+
+        
+        <div class="post-footer">
+            
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTful/">RESTful</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAPI/">WebAPI</a></li></ul>
 
-    </div>
+            <div class="page-share-wrap">
     
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-09-03 21:15:08" datetime="2019-09-03T13:15:08.000Z"  itemprop="datePublished">2019-09-03</time>
 
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/RESTful/">RESTful</a></li></ul>
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mar1timus.github.io/2019/09/04/vs2017-WebAPI编译报错/&title=《vs2017-WebAPI编译报错》 — Alex's Blog&pic=https://mar1timus.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mar1timus.github.io/2019/09/04/vs2017-WebAPI编译报错/&title=《vs2017-WebAPI编译报错》 — Alex's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
 
 
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2019/09/03/RESTful-API-设计最佳实践/">RESTful API 设计最佳实践</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTful/">RESTful</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAPI/">WebAPI</a></li></ul>
-
-    </div>
-    
-  </article>
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
+
+        </div>
+        
+            
+
+
         
     </div>
     
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/09/03/RESTful-API-设计最佳实践/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">RESTful API 设计最佳实践</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VS2017-web-api编译时-对路径“bin-roslyn-System-Reflection-Metadata-dll”的访问被拒绝-解决办法"><span class="post-toc-number">1.</span> <span class="post-toc-text">VS2017 web api编译时 对路径“bin\roslyn\System.Reflection.Metadata.dll”的访问被拒绝 解决办法</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
 </div>
 
     </main>
@@ -307,7 +363,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mar1timus.github.io/archives/2019/09/&title=Alex's Blog&pic=https://mar1timus.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mar1timus.github.io/2019/09/04/vs2017-WebAPI编译报错/&title=《vs2017-WebAPI编译报错》 — Alex's Blog&pic=https://mar1timus.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -319,7 +375,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mar1timus.github.io/archives/2019/09/&title=Alex's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mar1timus.github.io/2019/09/04/vs2017-WebAPI编译报错/&title=《vs2017-WebAPI编译报错》 — Alex's Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -331,7 +387,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aMW7DMAwF0Nz/0inQKUNtf5JuUUtPU5Aglp4HgiL5esXr/b3OP39+87mSX8//ddvCwMB4LON9uo6Onhz3iFp9TcmOGBgYOzAmQTaPhHmczM+GgYGBcXSUPMje9RkDAwMjD7h5uEzSuyQNxcDAwMgfPQEnyWJShrvhLo6BgfFAxl2Ngd9OB/+ov4GBgfHPGO/Wqm6WtCrzIPvDEzAwMJZmJGlfdIEsDmEkJbzyi8PAwNiAkZfP7k0oq8W7wxeKgYGxKCMvolWHJ6rlvGaQ7R0IAwPjUYy8WN9jVBsM1X9ddDkwMDCWYPRaidXwWi205ckiBgbGDox8416CWL5Px1fZi8YABgbGZoxm+Isxk30xMDB2YEw2SDbuJYvloh4GBsbSjMlQRe+gOT4pxhW6HxgYGA9n9Aaz5u3GagHuYi8MDIylGb3WY/7NKLGrhmYMDIwNGHeV2HpjYYXA2hsLw8DAWI6Rf07KbTm12q7AwMDYgZGXyfIQWV2TYQ4MDIx9GL0CWRKIq89vlvMwMDC2YVRHIppFscFLuZgcwcDAWJSRD1hUw2V+Ae6NWWBgYOzAmFw1y0EwuJpWC20YGBg7MO4dd6i2FqpNhSRZxMDAWJWRBNn5INfkchs9BwMDYwNGfintFeZGw14JDwMDAyNuLvZam/PBMgwMDIzJoOp5aK5em0c9DQwMjIczkktsfpTJ2GuzDYCBgbE0Y9IYyAtzk+TyYtgCAwNjZcYXnQp0cpl1Mp0AAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3aQXKEIBQEUO9/6eQCo9X9AcvFc5WaGIfnAjoN1xVff49Xe0/y8/Pfbr7w8PDwDg89ecLzXyWvpn0FtyPEw8PDO8a7G/TdPcmXJRN6cn/+TDw8PLxv8p6pyefJM2f34+Hh4X2ZlwTovLZoXyseHh7eF3iz+jUP2bPhtiEeDw8P7x1evov0nZ+P7O/h4eHhLe+qJ8G3DdbP5exzOK5Hi4eHh3eA18bZfJuqjbm7Dl3h4eHhnea1RW0yoe/Kt+3S8sOCh4eH9zovj7kJZuUJyWsaNih4eHh4JS8/UNXG5WSzahbc28oDDw8P7x3erGBdWTDaO4tAj4eHh3eMl2PaomHlIEL+ye1ygoeHh/c6r42z6+VCEu6L+R8PDw9vK68Nx+3UnA/xmZeH76Xsj4eHhxfP/Cvhdfb1G44F5LUvHh4e3lZeuwzkmPz5s423aIR4eHh4x3h769d2m222PEQlCB4eHt4x3qy03fD18XGB2bKBh4eHd47X/tvfLiezF5fH+tuR4OHh4R3j7VoS8soguXO93sXDw8M7zWvLiPzzpMLIy9/iAAEeHh7eAd4s5hah9kAcX6o88PDw8JZ5+UTflqrty2rr3ajwxcPDwzvAS8JoUq0mT8iXhOS3w20wPDw8vK28tlxYWSqSY1iz51ztKoeHh4e3ideWsElV0R4FWNlyw8PDw3uHtz7clfL32nTVZQQeHh5eyfsrr5VQvo5vSwo8PDy8E7yVLah2cm83yXYd2MLDw8M7wZttyefTdBLfZ9td0Xjw8PDwjvHyAmJW/iYLQx7iizCNh4eH9wFePrnP6t3Z0YHbl4KHh4f3MV5e4M7CcXuAoD4ZgYeHh7fAy4NvG7uTzbNZyVssDHh4eHhbecOzWguFRQKrS4fNR9Hw8PDwfl7/q1GSl1NEYLcAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

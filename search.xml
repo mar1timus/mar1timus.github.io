@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>vs2017-WebAPI编译报错</title>
+      <link href="/2019/09/04/vs2017-WebAPI%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99/"/>
+      <url>/2019/09/04/vs2017-WebAPI%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99/</url>
+      
+        <content type="html"><![CDATA[<h2 id="VS2017-web-api编译时-对路径“bin-roslyn-System-Reflection-Metadata-dll”的访问被拒绝-解决办法"><a href="#VS2017-web-api编译时-对路径“bin-roslyn-System-Reflection-Metadata-dll”的访问被拒绝-解决办法" class="headerlink" title="VS2017 web api编译时 对路径“bin\roslyn\System.Reflection.Metadata.dll”的访问被拒绝 解决办法"></a>VS2017 web api编译时 对路径“bin\roslyn\System.Reflection.Metadata.dll”的访问被拒绝 解决办法</h2><p>使用visual studio开发，一重新编译就会报错：<br>对路径“bin\roslyn\System.Reflection.Metadata.dll”的访问被拒绝</p><p>一开始的解决办法就是把bin下的文件都删除了，但是roslyn文件夹下的部分文件一直被占用，必须进程中把vbcscompiler进程干掉，才能删除，再重新编译，就没问题了。</p><p>但是过不了多久，编译又出错。</p><p>把这个组件，通过nuget更新到1.0.7以上就可以了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> RESTful </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> WebAPI </tag>
+            
+            <tag> RESTful </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>RESTful API 设计最佳实践</title>
       <link href="/2019/09/03/RESTful-API-%E8%AE%BE%E8%AE%A1%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
       <url>/2019/09/03/RESTful-API-%E8%AE%BE%E8%AE%A1%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</url>
