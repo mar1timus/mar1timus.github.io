@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>MVVM中轻松实现Command绑定任意事件的Command | Alex&#39;s Blog | It is better to be clear than to be clever.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="WPF,C#">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Alex</h5>
+          <a href="mailto:mar1timus@vip.qq.com" title="mar1timus@vip.qq.com" class="mail">
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>r</span>
+            
+              <span>1</span>
+            
+              <span>t</span>
+            
+              <span>i</span>
+            
+              <span>m</span>
+            
+              <span>u</span>
+            
+              <span>s</span>
+            
+              <span>@</span>
+            
+              <span>v</span>
+            
+              <span>i</span>
+            
+              <span>p</span>
+            
+              <span>.</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/mar1timus" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>MVVM中轻松实现Command绑定任意事件的Command</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">MVVM中轻松实现Command绑定任意事件的Command</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2011-07-12T15:19:48.000Z" itemprop="datePublished" class="page-time">
+  2011-07-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/WPF/">WPF</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-MVVM中轻松实现Command绑定（三）任意事件的Command"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">MVVM中轻松实现Command绑定任意事件的Command</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2011-07-12 23:19:48" datetime="2011-07-12T15:19:48.000Z"  itemprop="datePublished">2011-07-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/WPF/">WPF</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>原文链接：<a href="https://blog.csdn.net/qing2005/article/details/6601475" target="_blank" rel="noopener">https://blog.csdn.net/qing2005/article/details/6601475</a></p>
+<p>WPF中不是所有的控件都有Command属性的，如果窗体我需要在ViewModel中处理Loaded事件命令，或者其他事件的命令时，很难都过绑定Command完成，必须要注册依赖属性或事件等，太麻烦了。我喜欢简约、有效的方式，现在我和大家一起分享一下。</p>
+<p>场景，我需要处理Button的Click和MouseMove事件，但又避免用后置代码，尽量要在ViewModel中获取。单独一个Click可以通过Button的Command来完成，在前两篇文章中我已介绍过，现在就来处理MouseMove事件，这是需要一个System.Windows.Interactivity.dll，该dll是安装Blend后才有的，在C:\Program Files\Microsoft SDKs\Expression\Blend.NETFramework\v4.0\Libraries目录中，然后我们仍需要Prism.dll。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;Window x:Class=<span class="string">"WpfApplication1.Window2"</span></span><br><span class="line">        xmlns=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span></span><br><span class="line">        xmlns:x=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml"</span></span><br><span class="line">		xmlns:i=<span class="string">"clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"</span></span><br><span class="line">		xmlns:vm=<span class="string">"clr-namespace:WpfApplication1"</span></span><br><span class="line">        Title=<span class="string">"Window2"</span> Height=<span class="string">"124"</span> Width=<span class="string">"214"</span>&gt;</span><br><span class="line">	&lt;Window.DataContext&gt;</span><br><span class="line">		&lt;vm:Window2ViewModel /&gt;</span><br><span class="line">	&lt;/Window.DataContext&gt;</span><br><span class="line">    &lt;Grid&gt;</span><br><span class="line">		&lt;Button Name=<span class="string">"btn"</span> Content=<span class="string">"Button"</span> Height=<span class="string">"33"</span> HorizontalAlignment=<span class="string">"Left"</span> Margin=<span class="string">"40,24,0,0"</span> VerticalAlignment=<span class="string">"Top"</span> Width=<span class="string">"109"</span>&gt;</span><br><span class="line">			&lt;i:Interaction.Triggers&gt;</span><br><span class="line">				&lt;i:EventTrigger EventName=<span class="string">"Click"</span>&gt;</span><br><span class="line">					&lt;i:InvokeCommandAction Command=<span class="string">"&#123;Binding Command1&#125;"</span> CommandParameter=<span class="string">"10"</span> /&gt;</span><br><span class="line">				&lt;/i:EventTrigger&gt;</span><br><span class="line">				&lt;i:EventTrigger EventName=<span class="string">"MouseMove"</span>&gt;</span><br><span class="line">					&lt;i:InvokeCommandAction Command=<span class="string">"&#123;Binding Command2&#125;"</span> CommandParameter=<span class="string">"&#123;Binding ElementName=btn&#125;"</span> /&gt;</span><br><span class="line">				&lt;/i:EventTrigger&gt;</span><br><span class="line">			&lt;/i:Interaction.Triggers&gt;</span><br><span class="line">		&lt;/Button&gt;</span><br><span class="line">	&lt;/Grid&gt;</span><br><span class="line">&lt;/Window&gt;</span><br></pre></td></tr></table></figure>
+<p>注意；xmlns:i=”clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity”就是导入Blend的dll，然后在控件内部用&lt;i:Interaction.Triggers/&gt;即可，其它应该一看就知道，我通过事件触发器，来引发ViewModel中两个Command，第二个Command的参数是Button对象，通过ElementName=btn来指定。</p>
+<p>ViewModel：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">WpfApplication1</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Window2ViewModel</span> &#123;</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">public</span> ICommand Command1 &#123;</span><br><span class="line">			<span class="keyword">get</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> DelegateCommand&lt;<span class="keyword">string</span>&gt;((str) =&gt; &#123;</span><br><span class="line">					MessageBox.Show(<span class="string">"Command1 with parameter:"</span>+str);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">public</span> ICommand Command2 &#123;</span><br><span class="line">			<span class="keyword">get</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> DelegateCommand&lt;Button&gt;((button) =&gt; &#123;</span><br><span class="line">					Point p = Mouse.GetPosition(button);</span><br><span class="line">					button.Content = <span class="keyword">string</span>.Format(<span class="string">"&#123;0&#125;,&#123;1&#125;"</span>, p.X, p.Y);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-04T08:24:05.810Z" itemprop="dateUpdated">2019-09-04 16:24:05</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2011/07/12/MVVM中轻松实现Command绑定（三）任意事件的Command/" target="_blank" rel="external">https://mar1timus.github.io/2011/07/12/MVVM中轻松实现Command绑定（三）任意事件的Command/</a>
+        
+    </div>
+    <footer>
+        <a href="https://mar1timus.github.io">
+            <img src="/img/avatar.jpg" alt="Alex">
+            Alex
+        </a>
+    </footer>
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WPF/">WPF</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mar1timus.github.io/2011/07/12/MVVM中轻松实现Command绑定（三）任意事件的Command/&title=《MVVM中轻松实现Command绑定任意事件的Command》 — Alex's Blog&pic=https://mar1timus.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mar1timus.github.io/2011/07/12/MVVM中轻松实现Command绑定（三）任意事件的Command/&title=《MVVM中轻松实现Command绑定任意事件的Command》 — Alex's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2012/09/01/WinForm上传文件的多种方案解析/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">WinForm上传文件的多种方案解析</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+    
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Alex &copy; 2017 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mar1timus.github.io/2011/07/12/MVVM中轻松实现Command绑定（三）任意事件的Command/&title=《MVVM中轻松实现Command绑定任意事件的Command》 — Alex's Blog&pic=https://mar1timus.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mar1timus.github.io/2011/07/12/MVVM中轻松实现Command绑定（三）任意事件的Command/&title=《MVVM中轻松实现Command绑定任意事件的Command》 — Alex's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADGUlEQVR42u3aUXLiQAwFwNz/0uwBCOZJGraM0v5KBWOmh6ooepqfn/h6PF3Xr7668/ld+afPn1O+sLGxsb+EnSy6es/zgpLFXT/t+s7yF4CNjY29jp0/On/vdanL2fPNxcbGxsauNgNJKUq2rPpkbGxsbOycnZeWYwsNyiQ2Njb2X2YngdGp4D5pSJIhxH/K0rCxsbFvz66OWu/880fm29jY2Ng3Zj+KV1J+Jk3FfOQQKbCxsbEXsSfxTTXWSaL/PDaaPwcbGxt7B3sS30wWcZaUD5sPpFbY2NjYX8LuDXonRSsfMySb9WaF2NjY2IvYvSw9HxtUD+skn9WLnMqDBGxsbOwvYVd3YlJmThWz5M43W4aNjY29iJ0XrfywY/WZvc2qNh7Y2NjYu9m9YKga6+fLqg4nyt0VNjY29iJ2b3Dbw08+qxdUvZmKYGNjY69mV4/aVIvKpN5eIyMXNjY29iJ2LwCqHouZRFRnxwnY2NjYW9nJn/ucl4wNelFRNbQ6UL2xsbGxb8+ehEeTe6oFb7LFL79nbGxs7EXsU7FRNeKp/r4adb1cAzY2NvYi9rwwzA/c5FFRb3jcnDlgY2Njfwn71NHGPJbqvff6KylHTtjY2NiL2NVHVCcPeWsxHwNX6xQ2Njb2Dnbv8M0nilyvIWm2PdjY2NiL2L1QqRo2VV9NCtgkeMLGxsbex07+uZ8foDm7iQfaFWxsbOxF7OrxnV5sNNni5P7muBobGxt7BTuPZqqLq5aZ6ui3dz82Njb2Pna+KdVBQl4Uq+VtMmbGxsbG3sfuxfRJCczLVe+Q0GTwjI2Njb2VPV9iL+6pMnqDil9CJWxsbOw/wE4Y8wFtb5Q7aaiwsbGxd7AfxasXP1XHvcnnTr4qbGxs7E3sXgHIy9ikCOWbXt1obGxs7H3spGhVl1htZnqNzfUGvXkyNjY29jp2tTDkRau3lflm9Y4NYWNjY2P3hsF5i1KNt8ojBGxsbGzsYgMwKTmjiP9zrQg2Njb2zdiT4es8VDo79I1qFjY2NvYidi/WSZqKzxWqjzQn2NjY2N/H/gd+7Lk1rVQNAgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
